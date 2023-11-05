@@ -21,6 +21,9 @@ def transform(df, *args, **kwargs):
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
     # Specify your transformation logic here
+    df = df.drop_duplicates().reset_index(drop=True)
+    df['trip_id'] = df.index
+    
     df['tpep_pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
     df['tpep_dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime'])
 
